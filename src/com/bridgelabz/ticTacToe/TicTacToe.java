@@ -1,23 +1,42 @@
 package com.bridgelabz.ticTacToe;
-
+import java.util.Scanner;
 public class TicTacToe {
-private static char[] board = new char[10];
-	
-	static void startGame() {
-		for (int i = 1; i <= 9; i++) {
+	int i;
+	static char[] board = new char[10];  
+	static char player, computer;
+	Scanner scanner = new Scanner(System.in);
+
+	public void initialize() {
+		for (i = 1; i < 10; i++) {   //initialize
 			board[i] = ' ';
-			System.out.println(board);
 		}
 	}
-	public static void main(String[] args) {
-		System.out.println("Welcome to Tic Tac Toe ");
-		System.out.println(board[1]+" | "+board[2]+" | "+board[3]);
-		System.out.println("---------");
-		System.out.println(board[4]+" | "+board[5]+" | "+board[6]);
-		System.out.println("---------");
-		System.out.println(board[7]+" | "+board[8]+" | "+board[9]);
-		startGame();
+	
+	 // Taking input from user 
+	  //creating method to select x & O
+	 
+	public void check() { 
+		System.out.println("Please Select Your Choice Letter : 'X' or 'O' ");
+		char choice = scanner.next().charAt(0);
+		if (choice == 'X') {
+			player = 'X';
+			computer = 'O';
+		} else if (choice == 'Y') {
+			player = 'O';
+			computer = 'X';
+		}
 	}
-
+	
+	  //Display  tic tac toe game board
+	 
+	public static void main(String[] args) {
+		System.out.println("Welcome to Tic Tac Toe");
+		System.out.println(board[1] + " | " + board[2] + " | " + board[3]);
+		System.out.println("---------");
+		System.out.println(board[4] + " | " + board[5] + " | " + board[6]);
+		System.out.println("---------");
+		System.out.println(board[7] + " | " + board[8] + " | " + board[9]);
+		
+	}
 
 }
