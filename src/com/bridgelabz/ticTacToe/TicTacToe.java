@@ -1,15 +1,19 @@
 package com.bridgelabz.ticTacToe;
+import java.util.Random;
 import java.util.Scanner;
 public class TicTacToe {
-	static char[] board = new char[10]; 
+	static char[] board = new char[10];  //taking array
 	static char player, computer;
 	private static int playLocation;
-	public static Scanner scannerObject = new Scanner(System.in); 
+	public static Scanner scannerObject = new Scanner(System.in); //creating scanner object
 	
-	    
+	    /*
+	     *creating the game board
+	     *Select the index from 1 to 9 to make the move.
+	     */
 		 public static void createBoard()
 		 {
-	        for (int index = 1; index < 10; index++)      
+	        for (int index = 1; index < 10; index++)      //Initalize
 	        {
 	            board[index] = ' ';
 	        }
@@ -61,26 +65,42 @@ public class TicTacToe {
 		 		 {
 		 			 System.out.println("Invalid Choice");
 		 		 }
-	    }
+		 	 }
 	     
-		 /*
-	      * the isEmpty is a method used to check empty or not 
-	      * boolean value is returned by the isEmpty method
-	      * Check whether is the given string empty or not
-	      * 
-	      */
-	    public static boolean isEmpty() {
+		 	 /*
+		 	  * the isEmpty is an inbuilt method 
+		 	  * boolean value is returned by the isEmpty method
+		 	  * Check whether is the given string empty or not 
+		 	  */
+		 	 public static boolean isEmpty() {
 		       if (board[playLocation] == ' ') {
 		            return true;      
 		       } else {
 		            return false;
 		       }
-	    }   
+	       }
+		 	 /*
+		 	  * Tossing the coin to checking who won the first
+		 	  */
+		 	 public static void checkToss() {
+		 		 Random random = new Random();
+		 		 int tossResult = random.nextInt(2)+1;
+		 		 System.out.println("\nChoose 1 for Heads or 2 for Tails");
+		 		 int coinSelect = scannerObject.nextInt();
+		 		 
+		 		 if (coinSelect == tossResult) {
+		 			 System.out.println("\nPlayer Won The Toss! Player Starts");
+		 		 }else {
+		 			System.out.println("\nComputer Won The Toss! Computer Starts");
+		 		 }
+		 	 }
+		 	 
 
 	    public static void main(String[] args)
 	    {
 
 	        System.out.println("Welcome To Tic Tac Toe");
+	        checkToss();
 	        createBoard();
 	        getPlayerChoice();
 	        showBoard();
